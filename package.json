@@ -58,16 +58,7 @@
     "bare-refresh-watch": "^0.1.0",
     "bare-url": "^2.5.4"
   },
-  "peerDependencies": {
-    "bare-console": "*"
-  },
-  "peerDependenciesMeta": {
-    "bare-console": {
-      "optional": true
-    }
-  },
   "devDependencies": {
-    "bare-console": "^6.2.0",
     "brittle": "^4.3.0",
     "lunte": "^1.8.0",
     "prettier": "^3.4.1",

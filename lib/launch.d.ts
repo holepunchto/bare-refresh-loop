@@ -1,4 +1,3 @@
-import Console from 'bare-console'
 import { AppDevice, DeviceProcess } from 'bare-device'
 
 interface LaunchOptions {
@@ -10,8 +9,6 @@ interface LaunchOptions {
   identifier: string
   /** The port the server listens on. */
   port: number
-  /** Where to say where the build is when it cannot be launched. Defaults to the global console. */
-  console?: Console
 }
 
 /**
