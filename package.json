@@ -1,0 +1,76 @@
+{
+  "name": "bare-refresh-loop",
+  "version": "0.0.0",
+  "description": "Build an application, launch it, and refresh it as its files change",
+  "exports": {
+    "./package": "./package.json",
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./launch": {
+      "types": "./lib/launch.d.ts",
+      "default": "./lib/launch.js"
+    }
+  },
+  "imports": {
+    "os": {
+      "bare": "bare-os",
+      "default": "os"
+    },
+    "path": {
+      "bare": "bare-path",
+      "default": "path"
+    },
+    "url": {
+      "bare": "bare-url",
+      "default": "url"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "lib"
+  ],
+  "scripts": {
+    "format": "prettier --write . && lunte --fix",
+    "lint": "prettier --check . && lunte",
+    "test": "npm run test:bare && npm run test:node",
+    "test:bare": "brittle-bare --coverage test.js",
+    "test:node": "brittle-node --coverage test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holepunchto/bare-refresh-loop.git"
+  },
+  "author": "Holepunch",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/holepunchto/bare-refresh-loop/issues"
+  },
+  "homepage": "https://github.com/holepunchto/bare-refresh-loop#readme",
+  "dependencies": {
+    "bare-device": "^0.1.0",
+    "bare-os": "^3.9.3",
+    "bare-path": "^3.1.2",
+    "bare-refresh": "^0.1.0",
+    "bare-refresh-build": "^0.1.0",
+    "bare-refresh-watch": "^0.1.0",
+    "bare-url": "^2.5.4"
+  },
+  "peerDependencies": {
+    "bare-console": "*"
+  },
+  "peerDependenciesMeta": {
+    "bare-console": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "bare-console": "^6.2.0",
+    "brittle": "^4.3.0",
+    "lunte": "^1.8.0",
+    "prettier": "^3.4.1",
+    "prettier-config-holepunch": "^2.0.0"
+  }
+}
