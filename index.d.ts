@@ -35,6 +35,8 @@ interface LoopOptions {
   transport: Transport
   /** Modules to leave out of the bundle, as the host provides them. */
   builtins?: string[]
+  /** The specifiers of modules to attach to the host, such as `bare-native/overlay`. */
+  attach?: string[]
   /** Called before every pack, such as to run a compiler. */
   prepare?: (() => unknown) | null
   /** How to launch the app. Defaults to `bare-refresh-loop/launch`. */
