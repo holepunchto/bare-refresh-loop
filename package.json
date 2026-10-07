@@ -1,6 +1,6 @@
 {
   "name": "bare-refresh-loop",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Build an application, launch it, and refresh it as its files change",
   "exports": {
     "./package": "./package.json",
