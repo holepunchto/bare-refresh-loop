@@ -18,6 +18,7 @@ module.exports = async function* loop(opts = {}) {
     staging = path.join(base, '.refresh'),
     transport,
     builtins = [],
+    attach = [],
     prepare = null,
     launch = defaultLaunch,
     watching = [],
@@ -94,7 +95,8 @@ module.exports = async function* loop(opts = {}) {
       identifier: opts.identifier,
       runtime: opts.runtime,
       client: transport.client,
-      options: { port, host: address }
+      options: { port, host: address },
+      attach
     })
 
     const server = new RefreshServer(pack)
