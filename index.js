@@ -43,6 +43,7 @@ module.exports = async function* loop(opts = {}) {
   let app = null
   let sources = new Set()
   let root = null
+  let linked = null
 
   function emit(event) {
     if (waiting === null) {
@@ -76,6 +77,18 @@ module.exports = async function* loop(opts = {}) {
 
     if (watcher !== null) watcher.update([...sources, ...inputs])
 
+    // Native code is only ever added by building the app, so a bundle that
+    // needs an addon the app was not built with would fail to load it.
+    if (linked === null) linked = new Set(packed.bundle.addons)
+
+    const missing = packed.bundle.addons.filter((addon) => !linked.has(addon))
+
+    if (missing.length > 0) {
+      throw new Error(
+        `The application needs addons it was not built with, so restart to build it again: ${missing.join(', ')}`
+      )
+    }
+
     return packed.bundle
   }
 
@@ -88,6 +101,7 @@ module.exports = async function* loop(opts = {}) {
 
     await build(bundle, {
       base,
+      entry,
       staging,
       out,
       host,
