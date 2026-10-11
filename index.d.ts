@@ -62,7 +62,10 @@ type LoopEvent =
   | { type: 'connection'; id: string | null }
   /** The application was sent the bundle `id`. */
   | { type: 'update'; id: string | null }
-  /** Packing or serving the application failed. */
+  /**
+   * Packing or serving the application failed. This includes a change that needs an addon the app
+   * was not built with, which is not sent to the application and requires a restart.
+   */
   | { type: 'error'; error: Error }
   /** The application reported a failure, which `message` describes with paths on disk. */
   | { type: 'report'; report: Report; message: string }
